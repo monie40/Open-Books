@@ -1,38 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
-import { useState, useEffect } from 'react';
-import Header from './components/Header';
-import BookCard from './features/books/BookCard';
-import Searchbox from './components/Searchbox';
+import React from "react";
+import "./App.css";
+import { useState } from "react";
+import Header from "./components/Header";
+import Results from "./components/Results";
+import Searchbox from "./components/Searchbox";
+import PageControl from "./components/PageControl";
 
 function App() {
-
-  //const [data, setData] = useState(null);
-/*
-  useEffect(() => {
-    fetch('https://openlibrary.org/search.json?title=the+lord+the+rings&limit=2')
-      .then(response => response.json())
-      .then(json => setData(json))
-      .catch(error => console.error(error));
-  }, []);
-
-  console.log(data);
-  const books = JSON.stringify(data);
-
-  */
-  //console.log(books);
-  
-  //Try using conditional rendering
+  const [data, setData] = useState(null);
   return (
     <>
-        <Header />
-        <Searchbox />
-       
-       
-         
-    </> 
+      <Header />
+      <Searchbox data={data} setData={setData} />
+      <Results books={data}></Results>
+      <PageControl books={data}></PageControl>
+    </>
   );
 }
 
