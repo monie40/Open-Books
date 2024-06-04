@@ -8,12 +8,17 @@ import PageControl from "./components/PageControl";
 
 function App() {
   const [data, setData] = useState(null);
+  const [lastSearch, setLastSearch] = useState(null);
   return (
     <>
       <Header />
-      <Searchbox data={data} setData={setData} />
+      <Searchbox setData={setData} setLastSearch={setLastSearch} />
       <Results books={data}></Results>
-      <PageControl books={data}></PageControl>
+      <PageControl
+        books={data}
+        setData={setData}
+        lastSearch={lastSearch}
+      ></PageControl>
     </>
   );
 }

@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 99%;
+  
 }
 
 code {
@@ -14,4 +16,7 @@ code {
 .bookContent {
   margin-left: 10px;
   margin-right: 10px;
+}
+.page-link {
+  min-width: 50px;
 }
