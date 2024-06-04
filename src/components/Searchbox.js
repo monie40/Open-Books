@@ -1,22 +1,21 @@
 import { Button, Label, Col, FormGroup } from "reactstrap";
 import { Formik, Field, Form } from "formik";
-import Results from "./Results";
 
 export const searchLimit = 5;
 
-const Searchbox = ({ data, setData }) => {
+const Searchbox = ({ setData, setLastSearch }) => {
   const handleSubmit = (values) => {
     const { title } = values;
     const codedTitle = title.replaceAll(" ", "+");
 
-    const url =
-      "https://openlibrary.org/search.json?title=" +
-      codedTitle +
-      "&limit=" +
-      searchLimit;
+    const url = `https://openlibrary.org/search.json?title=${codedTitle}&limit=${searchLimit}`;
+
     fetch(url)
       .then((response) => response.json())
-      .then((json) => setData(json))
+      .then((json) => {
+        setLastSearch(codedTitle);
+        setData(json);
+      })
       .catch((error) => console.error(error));
 
     //When we render the component Booklist, we pass in a prop named books and for the value of books, we pass in data (the results from our fetch)

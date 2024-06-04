@@ -24,7 +24,7 @@ const BookCard = ({ book }) => {
   } = book;
   const picSrc = isbn
     ? "https://covers.openlibrary.org/b/isbn/" + isbn[0] + "-L.jpg"
-    : undefined;
+    : "/book.jpg";
 
   return (
     <Card>
@@ -32,7 +32,7 @@ const BookCard = ({ book }) => {
 
       <CardTitle>{title}</CardTitle>
       <CardBody>
-        <CardText>Author: {author_name[0]}</CardText>
+        <CardText>Author: {author_name?.[0] ?? "Unknown Author"}</CardText>
         <CardText>E-Book Access: {ebook_access}</CardText>
         <CardText>Publishing Year: {first_publish_year}</CardText>
         <CardText>Rating: {ratings_average}</CardText>
